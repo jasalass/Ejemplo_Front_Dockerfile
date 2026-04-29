@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKERHUB_TOKEN }}/front:latest
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/front:latest
 
             docker stop front || true
             docker rm front || true
@@ -42,4 +42,4 @@ jobs:
               --name front \
               -p 80:80 \
               --restart always \
-              ${{ secrets.DOCKERHUB_TOKEN }}/front:latest
+              ${{ secrets.DOCKERHUB_USERNAME }}/front:latest
